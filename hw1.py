@@ -6,9 +6,7 @@ from random import randint
 
 
 def dict_generator(keys_list):
-    result = dict()
-    for i in keys_list:
-        result[i] = i
+    result = {i: i for i in keys_list}
     return result
 
 
@@ -20,10 +18,7 @@ print(dict_generator(keys))
 # 2) Сгенерировать массив(list()). Из диапазона чисел от 0 до 100 записать в результирующий массив только четные числа.
 
 def list_generator():
-    result= list()
-    for i in range(0,100):
-        if i % 2 == 0:
-            result.append(i)
+    result = [i for i in range(0, 100) if i % 2 == 0]
     return result
 
 
@@ -147,13 +142,13 @@ print(sort_by_age(data))
 def group_by_city(input_list):
     cities = set()
     for i in input_list:
-        cities.add(i["city"])
+        cities.add(i.get("city"))
     result = dict()
     for i in cities:
         result[i] = list()
         for k in input_list:
-            if k["city"] == i:
-                result[i].append({"name": k["name"], "age": k["age"]})
+            if k.get("city") == i:
+                result[i].append({"name": k.get("name"), "age": k.get("age")})
     return result
 
 
