@@ -310,11 +310,8 @@ class Student(object):
     def __str__(self):
         return str("{} from group {}, grades: {}".format(self.name, self.group, self.grades))
 
-    def __hash__(self):
-        return sum(self.grades)/len(self.grades)
-
     def __lt__(self, other):
-        return self.__hash__() < other.__hash__()
+        return sum(self.grades)/len(self.grades) < sum(other.grades)/len(other.grades)
 
 
 def get_students_by_grade(students_list, input_param):
